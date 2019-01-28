@@ -23,6 +23,7 @@ func (err Error) Error() string {
 	return string(err)
 }
 
+// error types
 const (
 	ErrInvalid       Error = "invalid ISBN"
 	ErrEmpty         Error = "given string is empty"
