@@ -1,5 +1,7 @@
 go-isbn
 ===
+[![Build Status](https://travis-ci.org/nasa9084/go-isbn.svg?branch=master)](https://travis-ci.org/nasa9084/go-isbn)
+[![GoDoc](https://godoc.org/github.com/nasa9084/go-isbn?status.svg)](https://godoc.org/github.com/nasa9084/go-isbn)
 
 a package for parsing/validating ISBN(International Standard Book Number).
 
