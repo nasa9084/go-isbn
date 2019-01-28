@@ -8,12 +8,15 @@ import (
 
 // ISBN represents a parsed ISBN code.
 type ISBN struct {
-	Prefix            string
+	// a prefix element for 13-digit ISBN which is a GS1 prefix (978 or 979)
+	Prefix string
+	// RegistrationGroup represents language-sharing contry group, individual country or territory
 	RegistrationGroup string
 	Registrant        string
 	Publication       string
-	Checksum          string
-	IsLegacy          bool
+	// Checksum is used for checking the ISBN code is valid or not (0-9 or X for legacy)
+	Checksum string
+	IsLegacy bool
 }
 
 // Error is package-specific error type
