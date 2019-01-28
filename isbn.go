@@ -142,3 +142,21 @@ func (isbn ISBN) calcChecksum() int {
 	checkDigit = 10 - checkDigit
 	return checkDigit
 }
+
+func (isbn ISBN) String() string {
+	var buf strings.Builder
+	buf.Grow(21)
+	buf.WriteString("ISBN")
+	if !isbn.IsLegacy {
+		buf.WriteString(isbn.Prefix)
+		buf.WriteString("-")
+	}
+	buf.WriteString(isbn.RegistrationGroup)
+	buf.WriteString("-")
+	buf.WriteString(isbn.Registrant)
+	buf.WriteString("-")
+	buf.WriteString(isbn.Publication)
+	buf.WriteString("-")
+	buf.WriteString(isbn.Checksum)
+	return buf.String()
+}

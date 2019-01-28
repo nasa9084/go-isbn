@@ -1,6 +1,7 @@
 package isbn_test
 
 import (
+	"log"
 	"reflect"
 	"testing"
 
@@ -190,6 +191,24 @@ func TestUpdate(t *testing.T) {
 		}
 		if out.Checksum != c.newChecksum {
 			t.Errorf("%s != %s", out.Checksum, c.newChecksum)
+			return
+		}
+	}
+}
+
+func TestString(t *testing.T) {
+	candidates := []struct {
+		label    string
+		input    isbn.ISBN
+		expected string
+	}{
+		{"legacy", isbn.ISBN{Prefix: "978", RegistrationGroup: "4", Registrant: "10", Publication: "109205", Checksum: "2", IsLegacy: true}, "ISBN4-10-109205-2"},
+		{"current", isbn.ISBN{Prefix: "978", RegistrationGroup: "4", Registrant: "00", Publication: "310101", Checksum: "8", IsLegacy: false}, "ISBN978-4-00-310101-8"},
+	}
+	for _, c := range candidates {
+		out := c.input.String()
+		if out != c.expected {
+			log.Printf("%s: %s != %s", c.label, out, c.expected)
 			return
 		}
 	}
